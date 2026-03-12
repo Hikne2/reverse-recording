@@ -2,16 +2,16 @@
     "name": "Audio Reverse",
     "short_name": "Reverse",
     "description": "Record audio and play it back in reverse",
-    "start_url": "/",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#121212",
     "theme_color": "#121212",
     "orientation": "portrait",
     "icons": [
         {
-            "src": "icons/icon-192x192.svg",
+            "src": "./icons/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/svg+xml"
+            "type": "image/png"
         }
     ]
 }

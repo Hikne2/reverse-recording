@@ -2,12 +2,12 @@
 
 const CACHE_NAME = 'audio-reverse-v2';
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/style.css',
-    '/app.js',
-    '/manifest.json',
-    '/icons/icon-192x192.svg'
+    './',
+    './index.html',
+    './style.css',
+    './app.js',
+    './manifest.json',
+    './icons/icon-192x192.png'
 ];
 
 // Install event - cache resources
