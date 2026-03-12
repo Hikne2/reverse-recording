@@ -60,17 +60,19 @@ class AudioReverseApp {
             }
         });
 
-        // Record button - always start recording, stop any playback
+        // Record button - toggle recording, stop playback if playing
         this.recordButton.addEventListener('click', () => {
             if (this.isPlaying) {
                 this.stopPlayback();
             }
-            if (!this.isRecording) {
+            if (this.isRecording) {
+                this.stopRecording();
+            } else {
                 this.startRecording();
             }
         });
 
-        // Play button - stop recording/reverse and play normal, or stop if already playing normal
+        // Play button - toggle normal playback
         this.playButton.addEventListener('click', () => {
             if (this.isRecording) {
                 this.stopRecording();
@@ -78,19 +80,19 @@ class AudioReverseApp {
             } else if (this.isReversed) {
                 this.stopPlayback();
                 this.playNormal();
-            } else if (this.isPlaying) {
+            } else if (this.isPlaying && !this.isReversed) {
                 this.stopPlayback();
             } else {
                 this.playNormal();
             }
         });
 
-        // Reverse button - stop recording/normal and play reverse, or stop if already playing reverse
+        // Reverse button - toggle reverse playback
         this.reverseButton.addEventListener('click', () => {
             if (this.isRecording) {
                 this.stopRecording();
                 this.playReversed();
-            } else if (!this.isReversed && this.isPlaying) {
+            } else if (this.isPlaying && !this.isReversed) {
                 this.stopPlayback();
                 this.playReversed();
             } else if (this.isReversed) {
@@ -248,6 +250,7 @@ class AudioReverseApp {
             // Create gain node for proper audio output
             this.gainNode = this.audioContext.createGain();
             this.gainNode.gain.value = 1.0;
+            this.gainNode.connect(this.audioContext.destination);
 
             // Create delay/echo effect
             const echoAmount = parseFloat(this.echoControl.value);
@@ -342,6 +345,7 @@ class AudioReverseApp {
             // Create gain node for proper audio output
             this.gainNode = this.audioContext.createGain();
             this.gainNode.gain.value = 1.0;
+            this.gainNode.connect(this.audioContext.destination);
 
             // Create delay/echo effect
             const echoAmount = parseFloat(this.echoControl.value);
