@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Reverse</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Add iOS specific meta tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Audio Reverse">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.svg">
+</head>
+<body>
+    <div class="container">
+        <button id="menuButton" class="menu-btn">☰</button>
+
+        <main>
+            <div class="controls">
+                <div class="control-group">
+                    <button id="recordButton" class="control-btn record-btn">
+                        <span class="btn-icon">🔴</span>
+                        <span class="btn-text">Start Recording</span>
+                    </button>
+                </div>
+
+                <div class="control-group">
+                    <button id="playButton" class="control-btn play-btn">
+                        <span class="btn-icon">▶️</span>
+                        <span class="btn-text">Play Recorded</span>
+                    </button>
+                </div>
+
+                <div class="control-group">
+                    <button id="reverseButton" class="control-btn reverse-btn">
+                        <span class="btn-icon">◀️</span>
+                        <span class="btn-text">Play Reverse</span>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Fullscreen Menu -->
+    <div id="menuOverlay" class="menu-overlay hidden">
+        <div class="menu-content">
+            <div class="menu-header">
+                <h2>Settings</h2>
+                <button id="closeMenuButton" class="close-menu-btn">×</button>
+            </div>
+
+            <div class="menu-options">
+                <div class="option-item">
+                    <label for="loopToggle">🔁 Loop Playback</label>
+                    <input type="checkbox" id="loopToggle" class="toggle-input">
+                </div>
+
+                <div class="option-item">
+                    <label for="speedControl">⚡ Playback Speed</label>
+                    <input type="range" id="speedControl" class="slider-input" min="0.5" max="2" step="0.1" value="1">
+                    <span id="speedValue">1.0x</span>
+                </div>
+
+                <div class="option-item">
+                    <label for="pitchControl">🎵 Pitch</label>
+                    <input type="range" id="pitchControl" class="slider-input" min="-12" max="12" step="1" value="0">
+                    <span id="pitchValue">0</span>
+                </div>
+
+                <div class="option-item">
+                    <label for="echoControl">🔊 Echo</label>
+                    <input type="range" id="echoControl" class="slider-input" min="0" max="1" step="0.1" value="0">
+                    <span id="echoValue">0%</span>
+                </div>
+
+                <div class="option-item">
+                    <label for="bassControl">🎸 Bass Boost</label>
+                    <input type="range" id="bassControl" class="slider-input" min="0" max="10" step="1" value="0">
+                    <span id="bassValue">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Microphone Permission Popup -->
+    <div id="permissionPopup" class="permission-popup">
+        <div class="permission-content">
+            <h2>Microphone Access Required</h2>
+            <p>This app needs access to your microphone to record audio. Please allow access when prompted.</p>
+            <button id="grantPermissionBtn" class="popup-btn">Grant Permission</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
